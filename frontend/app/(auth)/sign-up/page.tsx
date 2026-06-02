@@ -2,49 +2,91 @@
 
 import {useState} from 'react';
 import Link from 'next/link';
-import {Eye, EyeOff, LogIn} from 'lucide-react';
+import {Eye, EyeOff, UserPlus} from 'lucide-react';
 import {Button} from '@/components/ui/button';
 import {Input} from '@/components/ui/input';
 import {Label} from '@/components/ui/label';
 import {useRouter} from 'next/navigation';
 
-export default function SignInPage() {
+export default function SignUpPage() {
   const [showPassword, setShowPassword] = useState(false);
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const router = useRouter();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
     if (isSubmitting) return;
-
+ 
     setIsSubmitting(true);
     setTimeout(() => {
-      router.push("/dashboard");
+      router.push("/sign-in"); 
       setIsSubmitting(false);
     }, 2000);
   };
 
-  return (
+   return (
     <div className="space-y-6">
       <div className="space-y-2">
         <h2 className="text-3xl font-bold tracking-tight text-foreground">
-          Welcome back
+          Create an account
         </h2>
         <p className="text-muted-foreground">
-          Sign in to your account to continue
+          Your app highlights 
         </p>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div className="space-y-2">
-          <Label htmlFor="email">Email or Phone Number</Label>
+          <Label htmlFor="firstName">First Name</Label>
+          <Input
+            id="firstName"
+            type="text"
+            placeholder="Juan"
+            value={firstName}
+            onChange={e => setFirstName(e.target.value)}
+            disabled={isSubmitting}
+            required
+          />
+        </div>
+
+          <div className="space-y-2">
+          <Label htmlFor="lastName">Last Name</Label>
+          <Input
+            id="lastName"
+            type="text"
+            placeholder="Dela Cruz"
+            value={lastName}
+            onChange={e => setLastName(e.target.value)}
+            disabled={isSubmitting}
+            required
+          />
+        </div>
+
+         <div className="space-y-2">
+          <Label htmlFor="username">Username</Label>
+          <Input
+            id="username"
+            type="text"
+            placeholder="user@123"
+            value={username}
+            onChange={e => setUsername(e.target.value)}
+            disabled={isSubmitting}
+            required
+          />
+        </div>
+
+        <div className="space-y-2">
+          <Label htmlFor="email">Email</Label>
           <Input
             id="email"
-            type="text"
-            placeholder="you@example.com or 09xxxxxxxxx"
+            type="email"
+            placeholder="you@example.com"
             value={email}
             onChange={e => setEmail(e.target.value)}
             disabled={isSubmitting}
@@ -53,15 +95,7 @@ export default function SignInPage() {
         </div>
 
         <div className="space-y-2">
-          <div className="flex items-center justify-between">
-            <Label htmlFor="password">Password</Label>
-            <Link
-              href="/forgot-password"
-              className="text-sm text-primary hover:underline font-medium"
-            >
-              Forgot password?
-            </Link>
-          </div>
+          <Label htmlFor="password">Password</Label>
           <div className="relative">
             <Input
               id="password"
@@ -83,25 +117,37 @@ export default function SignInPage() {
           </div>
         </div>
 
+        <div className="space-y-2">
+          <Label htmlFor="confirmPassword">Confirm Password</Label>
+          <Input
+            id="confirmPassword"
+            placeholder="••••••••"
+            type="password"
+            value={confirmPassword}
+            onChange={e => setConfirmPassword(e.target.value)}
+            disabled={isSubmitting}
+            required
+          />
+        </div>
+
         <Button
           type="submit"
           className="w-full bg-[#3c5e45]"
           size="lg"
           disabled={isSubmitting}
         >
-          <LogIn size={18} />
-          {isSubmitting ? 'Signing in...' : 'Sign In'}
+          <UserPlus size={18} />
+          {isSubmitting ? 'Creating account...' : 'Create Account'}
         </Button>
-
       </form>
 
       <p className="text-center text-sm text-muted-foreground">
-        Don&apos;t have an account?{' '}
+        Already have an account?{' '}
         <Link
-          href="/sign-up"
+          href="/sign-in"
           className="text-[#3c5e45] font-semibold hover:underline"
         >
-          Sign up
+          Sign in
         </Link>
       </p>
     </div>
