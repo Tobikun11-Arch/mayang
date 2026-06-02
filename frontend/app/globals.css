@@ -242,6 +242,7 @@
 
   --font-recoleta: var(--font-recoleta), ui-serif, Georgia, serif;
   --font-lota-grotes-que-alt: var(--font-lota-grotes-que-alt), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-nunito: var(--font-nunito), ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 
   --radius-cards: 16px;
   --radius-pills: 1440px;

@@ -1,63 +1,49 @@
+import Image from 'next/image'
 import React from 'react'
 
-const values = [
+const familyFeatures = [
   {
-    icon: '📦',
-    title: 'Dedicated returns specialists',
-    body: 'We focus exclusively on returns management, providing in-depth solutions that drive real business results others can\'t match.',
+    imageSrc: 'https://images.unsplash.com/photo-1524661135-423995f22d0b?w=600&h=400&fit=crop',
+    title: 'Family Location Tracking',
+    body: 'See where your loved ones are in real time. Mayang displays every family member\'s location on a shared map so you always know they are safe or on the move.',
   },
   {
-    icon: '🎧',
-    title: 'Exceptional customer support',
-    body: 'We don\'t outsource support — you\'ll work directly with specialists who understand your business and are ready to help whenever you need it.',
+    imageSrc: 'https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600&h=400&fit=crop',
+    title: 'Safety Check-Ins',
+    body: 'Family members can tap a button to broadcast that they are safe. GPS verification and timestamps give you confidence that everyone is accounted for.',
   },
   {
-    icon: '🌍',
-    title: 'Effortless global expansion',
-    body: 'We handle customs, multi-language support, multi-location returns, and compliance with international regulations, simplifying your global growth.',
+    imageSrc: 'https://images.unsplash.com/photo-1491438590914-bc09fcaaf77a?w=600&h=400&fit=crop',
+    title: 'Remote Family Updates',
+    body: 'Even when family members are far away, Mayang keeps you informed with real-time status updates, news, and alerts about their area.',
   },
 ]
 
 export default function About() {
   return (
-    <section className="w-full bg-[#ffffff]">
+    <section id="family" className="scroll-mt-[60px] w-full bg-[#ffffff]">
       <div className="mx-auto max-w-[1200px] px-6 py-20 md:py-28">
-        <div className="grid md:grid-cols-2 gap-12 mb-20 items-start">
-          <div>
-            <h2 className="text-[48px] md:text-[56px] text-[#051923] leading-[1.07] font-bold mb-6" style={{ fontFamily: 'system-ui, sans-serif' }}>
-              Leading returns solution for <span className="text-phoenix-orange">international brands</span>
-            </h2>
-            <p className="text-[14px] text-[#525252] leading-[1.54] tracking-[0.05px] max-w-lg" style={{ fontFamily: 'system-ui, sans-serif' }}>
-              At 8returns, we&apos;ve been in your shoes. Our founders and investors have scaled successful e-commerce companies, giving us firsthand understanding of your challenges and the ability to create solutions that truly meet your needs.
-            </p>
-            <a
-              href="#"
-              className="mt-6 inline-flex items-center gap-2 text-[14px] font-medium text-phoenix-orange hover:underline"
-              style={{ fontFamily: 'system-ui, sans-serif' }}
-            >
-              Learn more about us
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </a>
-          </div>
-          <div className="grid grid-cols-2 gap-4">
-            <div className="aspect-square rounded-[16px] bg-cyan-glow/30 flex items-center justify-center text-[32px]">👥</div>
-            <div className="aspect-square rounded-[16px] bg-[#eef0f2] flex items-center justify-center text-[32px]">💼</div>
-            <div className="aspect-square rounded-[16px] bg-[#eef0f2] flex items-center justify-center text-[32px]">🤝</div>
-            <div className="aspect-square rounded-[16px] bg-phoenix-orange/20 flex items-center justify-center text-[32px]">✨</div>
-          </div>
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <h2 className="text-[44px] leading-[1.1] tracking-[-1.32px] text-midnight-ink font-medium">
+            Keep Your Family Safe
+          </h2>
+          <p className="mt-4 text-base text-muted-ash leading-relaxed">
+            Nothing matters more than knowing your family is safe. Mayang gives you the tools to track, check in, and stay connected with every member of your household.
+          </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {values.map((v) => (
-            <div key={v.title} className="flex flex-col gap-4">
-              <span className="text-[32px]">{v.icon}</span>
-              <h3 className="text-[22px] text-[#051923] leading-[1.27] font-semibold" style={{ fontFamily: 'system-ui, sans-serif' }}>
-                {v.title}
+        <div className="grid md:grid-cols-3 gap-6">
+          {familyFeatures.map((feature, i) => (
+            <div
+              key={i}
+              className="rounded-xl bg-canvas-white p-6 md:p-8 border border-midnight-ink/5 shadow-[rgba(17,17,17,0.02)_0px_-6px_6px_0px,rgba(17,17,17,0.01)_0px_-23px_9px_0px]"
+            >
+              <Image src={feature.imageSrc} alt={feature.title} width={600} height={400} className="w-full aspect-video rounded-lg object-cover mb-4" />
+              <h3 className="text-lg font-semibold text-midnight-ink mb-2">
+                {feature.title}
               </h3>
-              <p className="text-[14px] text-[#525252] leading-[1.54] tracking-[0.05px]" style={{ fontFamily: 'system-ui, sans-serif' }}>
-                {v.body}
+              <p className="text-sm text-muted-ash leading-relaxed">
+                {feature.body}
               </p>
             </div>
           ))}
@@ -66,4 +52,3 @@ export default function About() {
     </section>
   )
 }
-

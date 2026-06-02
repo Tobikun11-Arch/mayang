@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Playfair_Display, Inter } from "next/font/google";
+import { Geist, Geist_Mono, Playfair_Display, Inter, Nunito } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -24,6 +24,12 @@ const inter = Inter({
   weight: ["400", "700"],
 });
 
+const nunito = Nunito({
+  variable: "--font-nunito",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
+
 export const metadata: Metadata = {
   title: "TechFusion — Design Lab",
   description: "Design exploration lab",
@@ -37,9 +43,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} ${inter.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} ${inter.variable} ${nunito.variable} h-full antialiased`}
     >
-      <body className="min-h-full">{children}</body>
+      <body className="min-h-full" suppressHydrationWarning>{children}</body>
     </html>
   );
 }
